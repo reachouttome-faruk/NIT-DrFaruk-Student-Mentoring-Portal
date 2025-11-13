@@ -1,0 +1,149 @@
+import { jsPDF } from "jspdf";
+import autoTable from "jspdf-autotable";
+import type { MentoringReport } from "@shared/schema";
+
+export function generatePDF(data: MentoringReport, logoDataUrl?: string) {
+  const doc = new jsPDF();
+  const pageWidth = doc.internal.pageSize.width;
+  let yPos = 20;
+
+  if (logoDataUrl) {
+    doc.addImage(logoDataUrl, "PNG", pageWidth / 2 - 15, yPos, 30, 30);
+    yPos += 35;
+  }
+
+  doc.setFontSize(16);
+  doc.setFont("helvetica", "bold");
+  doc.text("Navodaya Institute of Technology", pageWidth / 2, yPos, { align: "center" });
+  yPos += 7;
+
+  doc.setFontSize(12);
+  doc.text("Students Mentoring Report", pageWidth / 2, yPos, { align: "center" });
+  yPos += 10;
+
+  doc.setFontSize(10);
+  doc.setFont("helvetica", "normal");
+  doc.text(`Department: ${data.studentDetails.mentorDepartment}`, pageWidth / 2, yPos, { align: "center" });
+  yPos += 12;
+
+  doc.setFontSize(11);
+  doc.setFont("helvetica", "bold");
+  doc.text("Student Details", 14, yPos);
+  yPos += 5;
+
+  autoTable(doc, {
+    startY: yPos,
+    head: [["Field", "Value"]],
+    body: [
+      ["Student Name", data.studentDetails.studentName],
+      ["Class", data.studentDetails.class],
+      ["Section", data.studentDetails.section],
+    ],
+    theme: "grid",
+    headStyles: { fillColor: [33, 91, 145], fontSize: 10 },
+    styles: { fontSize: 9 },
+    margin: { left: 14, right: 14 },
+  });
+
+  yPos = (doc as any).lastAutoTable.finalY + 10;
+
+  doc.setFontSize(11);
+  doc.setFont("helvetica", "bold");
+  doc.text("Mentor Details", 14, yPos);
+  yPos += 5;
+
+  autoTable(doc, {
+    startY: yPos,
+    head: [["Field", "Value"]],
+    body: [
+      ["Mentor Name", data.studentDetails.mentorName],
+      ["Designation", data.studentDetails.mentorDesignation],
+      ["Department", data.studentDetails.mentorDepartment],
+    ],
+    theme: "grid",
+    headStyles: { fillColor: [33, 91, 145], fontSize: 10 },
+    styles: { fontSize: 9 },
+    margin: { left: 14, right: 14 },
+  });
+
+  yPos = (doc as any).lastAutoTable.finalY + 10;
+
+  if (yPos > 250) {
+    doc.addPage();
+    yPos = 20;
+  }
+
+  doc.setFontSize(11);
+  doc.setFont("helvetica", "bold");
+  doc.text("Subject-wise Performance", 14, yPos);
+  yPos += 5;
+
+  autoTable(doc, {
+    startY: yPos,
+    head: [["Subject", "Code", "Faculty", "Weaknesses", "CW Marks", "IA Marks", "Expected Outcome", "Mentor Remarks", "Current Status"]],
+    body: data.subjectPerformance.map((subject) => [
+      subject.subjectName,
+      subject.subjectCode,
+      subject.teachingFaculty,
+      subject.weaknesses,
+      subject.classworkMarks,
+      subject.internalMarks,
+      subject.expectedOutcome,
+      subject.mentorRemarks,
+      subject.currentStatus,
+    ]),
+    theme: "grid",
+    headStyles: { fillColor: [33, 91, 145], fontSize: 8 },
+    styles: { fontSize: 7, cellPadding: 2 },
+    margin: { left: 14, right: 14 },
+    columnStyles: {
+      0: { cellWidth: 20 },
+      1: { cellWidth: 15 },
+      2: { cellWidth: 20 },
+      3: { cellWidth: 25 },
+      4: { cellWidth: 15 },
+      5: { cellWidth: 15 },
+      6: { cellWidth: 25 },
+      7: { cellWidth: 30 },
+      8: { cellWidth: 20 },
+    },
+  });
+
+  doc.addPage();
+  yPos = 20;
+
+  doc.setFontSize(11);
+  doc.setFont("helvetica", "bold");
+  doc.text("Other Parameters", 14, yPos);
+  yPos += 5;
+
+  const otherParams = data.otherParameters;
+  autoTable(doc, {
+    startY: yPos,
+    head: [["Parameter", "Details"]],
+    body: [
+      ["Academic Track (SGPA)", otherParams.academicTrack],
+      ["Attendance & Alerts", otherParams.attendance],
+      ["Technical Skills", otherParams.technicalSkills],
+      ["Aptitude Skills", otherParams.aptitudeSkills],
+      ["Programming Skills", otherParams.programmingSkills],
+      ["Co-Curricular Activities", otherParams.coCurricularActivities],
+      ["Extra-Curricular Activities", otherParams.extraCurricularActivities],
+      ["Ranks/Awards/Rewards", otherParams.ranksAwards],
+      ["Disciplinary Issues", otherParams.disciplinaryIssues],
+      ["Health Graph", otherParams.healthGraph],
+      ["Parent Visits", otherParams.parentVisits],
+      ["Other Issues", otherParams.otherIssues],
+    ],
+    theme: "grid",
+    headStyles: { fillColor: [33, 91, 145], fontSize: 10 },
+    styles: { fontSize: 9, cellPadding: 3 },
+    margin: { left: 14, right: 14 },
+    columnStyles: {
+      0: { cellWidth: 60 },
+      1: { cellWidth: 120 },
+    },
+  });
+
+  return doc;
+}
