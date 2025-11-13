@@ -1,0 +1,48 @@
+Design the Students Mentoring Portal website for Navodaya Institute of Technology faculties.
+The website include Navodaya Institute of Technology logo
+The website start with entering students details like name and class and section and mentor details like name and designation and department at the beginning.
+
+after entering all the student and mentor details the website should goto a separate page to collect the below details of the student for every subject in horizontal table format. 
+
+Then the following parameters should be included separately as in table format for every subject,
+
+Subject name with code	
+Teaching Faculty Name 
+Weaknesses in the Subject	
+Class Work & Assignments Marks 
+Internal Assessment Performance	in terms of Marks
+Expected Outcome     	
+Mentor Remarks with Action Plan to Achieve the Outcome	
+Current Status of previous Outcome
+
+after collecting all the details from the student the site should goto another page to collect the following details in table format
+Another data collection section will come including the following 
+
+Other parameters 
+
+Academic Track so far
+(Mention SGPA- Sem-wise)
+
+Attendance and alerts given to students/parents if any
+
+Skill possession: (Based on Assessment Tests)
+1.	Technical
+2.	Aptitude
+
+Currently learning Programming Skills
+
+Participation in co-curricular activities (workshop/ seminar/ guest lectures etc.)
+
+Participations in Extra-Curricular Activities (Sports/ Cultural/ NSS etc.)
+
+Ranks/ Awards/ Rewards received at College/University level 
+Any involvement in In-disciplinary activities 
+
+Latest Health Graph
+
+No. of times parents Visited to college and department
+
+Any other (Academic/Non-Academic related issues) identified & rectified:
+
+Finally the entire datasheet should come as downloadable pdf format. The PDF document should include college name with logo and department name as header. after that student details and mentor details
+all the remining data should come as neat table format. 
