@@ -16,18 +16,19 @@ export default function OtherParametersForm({ defaultValues, onSubmit, onBack }:
   const form = useForm<OtherParameters>({
     resolver: zodResolver(otherParametersSchema),
     defaultValues: defaultValues || {
-      academicTrack: "",
-      attendance: "",
-      technicalSkills: "",
+      academicTrackSGPA: "",
+      attendanceAlerts: "",
+      technicalProgrammingSkills: "",
       aptitudeSkills: "",
-      programmingSkills: "",
+      clubsTrainings: "",
       coCurricularActivities: "",
       extraCurricularActivities: "",
-      ranksAwards: "",
-      disciplinaryIssues: "",
-      healthGraph: "",
+      ranksAwardsRecognitions: "",
+      indisciplinaryActivities: "",
+      currentHealthStatus: "",
       parentVisits: "",
-      otherIssues: "",
+      otherIssuesResolved: "",
+      studentGrievances: "",
     },
   });
 
@@ -41,10 +42,10 @@ export default function OtherParametersForm({ defaultValues, onSubmit, onBack }:
           <CardContent className="space-y-4">
             <FormField
               control={form.control}
-              name="academicTrack"
+              name="academicTrackSGPA"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Academic Track (SGPA - Semester-wise)</FormLabel>
+                  <FormLabel>Academic Track (SGPA-Semester-wise)</FormLabel>
                   <FormDescription>Enter semester-wise SGPA, e.g., "Sem 1: 8.5, Sem 2: 8.8"</FormDescription>
                   <FormControl>
                     <Textarea placeholder="Sem 1: 8.5, Sem 2: 8.8..." data-testid="input-academic-track" {...field} />
@@ -55,11 +56,11 @@ export default function OtherParametersForm({ defaultValues, onSubmit, onBack }:
             />
             <FormField
               control={form.control}
-              name="attendance"
+              name="attendanceAlerts"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Attendance and Alerts</FormLabel>
-                  <FormDescription>Mention attendance percentage and any alerts given to students/parents</FormDescription>
+                  <FormLabel>Attendance and Alerts Issued (to Parents/Guardians)</FormLabel>
+                  <FormDescription>Mention attendance percentage and any alerts given to parents/guardians</FormDescription>
                   <FormControl>
                     <Textarea placeholder="85% attendance, Alert issued on..." data-testid="input-attendance" {...field} />
                   </FormControl>
@@ -72,18 +73,17 @@ export default function OtherParametersForm({ defaultValues, onSubmit, onBack }:
 
         <Card>
           <CardHeader>
-            <CardTitle>Skills Assessment</CardTitle>
+            <CardTitle>Skill Possession (Based on Assessment Tests)</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <FormField
               control={form.control}
-              name="technicalSkills"
+              name="technicalProgrammingSkills"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Technical Skills</FormLabel>
-                  <FormDescription>Based on assessment tests</FormDescription>
+                  <FormLabel>Technical / Programming Skills</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Proficient in Java, C++..." data-testid="input-technical-skills" {...field} />
+                    <Textarea placeholder="Proficient in Java, C++, Python..." data-testid="input-technical-skills" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -95,22 +95,8 @@ export default function OtherParametersForm({ defaultValues, onSubmit, onBack }:
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Aptitude Skills</FormLabel>
-                  <FormDescription>Based on assessment tests</FormDescription>
                   <FormControl>
                     <Textarea placeholder="Logical reasoning: Good, Quantitative: Average..." data-testid="input-aptitude-skills" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="programmingSkills"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Currently Learning Programming Skills</FormLabel>
-                  <FormControl>
-                    <Textarea placeholder="Python, Machine Learning..." data-testid="input-programming-skills" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -126,11 +112,23 @@ export default function OtherParametersForm({ defaultValues, onSubmit, onBack }:
           <CardContent className="space-y-4">
             <FormField
               control={form.control}
+              name="clubsTrainings"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Participation in NIT Clubs or Certification Trainings</FormLabel>
+                  <FormControl>
+                    <Textarea placeholder="Member of Coding Club, AWS Certification..." data-testid="input-clubs-trainings" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
               name="coCurricularActivities"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Co-Curricular Activities</FormLabel>
-                  <FormDescription>Workshop, seminar, guest lectures, etc.</FormDescription>
+                  <FormLabel>Participation in Co-Curricular Activities (Workshops, Seminars, Guest Lectures, etc.)</FormLabel>
                   <FormControl>
                     <Textarea placeholder="Attended AI workshop, Guest lecture on..." data-testid="input-cocurricular" {...field} />
                   </FormControl>
@@ -143,8 +141,7 @@ export default function OtherParametersForm({ defaultValues, onSubmit, onBack }:
               name="extraCurricularActivities"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Extra-Curricular Activities</FormLabel>
-                  <FormDescription>Sports, cultural, NSS, etc.</FormDescription>
+                  <FormLabel>Participation in Extra-Curricular Activities (Sports, Cultural, NSS, etc.)</FormLabel>
                   <FormControl>
                     <Textarea placeholder="NSS volunteer, Cricket team member..." data-testid="input-extracurricular" {...field} />
                   </FormControl>
@@ -154,11 +151,10 @@ export default function OtherParametersForm({ defaultValues, onSubmit, onBack }:
             />
             <FormField
               control={form.control}
-              name="ranksAwards"
+              name="ranksAwardsRecognitions"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Ranks/Awards/Rewards</FormLabel>
-                  <FormDescription>Received at college/university level</FormDescription>
+                  <FormLabel>Ranks / Awards / Recognitions at College or University Level</FormLabel>
                   <FormControl>
                     <Textarea placeholder="1st Prize in Hackathon..." data-testid="input-awards" {...field} />
                   </FormControl>
@@ -176,11 +172,10 @@ export default function OtherParametersForm({ defaultValues, onSubmit, onBack }:
           <CardContent className="space-y-4">
             <FormField
               control={form.control}
-              name="disciplinaryIssues"
+              name="indisciplinaryActivities"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Disciplinary Activities</FormLabel>
-                  <FormDescription>Any involvement in disciplinary activities</FormDescription>
+                  <FormLabel>Involvement in Any In-disciplinary Activities</FormLabel>
                   <FormControl>
                     <Textarea placeholder="None / Details of any issues..." data-testid="input-disciplinary" {...field} />
                   </FormControl>
@@ -190,11 +185,10 @@ export default function OtherParametersForm({ defaultValues, onSubmit, onBack }:
             />
             <FormField
               control={form.control}
-              name="healthGraph"
+              name="currentHealthStatus"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Health Graph</FormLabel>
-                  <FormDescription>Latest health status</FormDescription>
+                  <FormLabel>Current Health Status</FormLabel>
                   <FormControl>
                     <Textarea placeholder="Good health / Any health concerns..." data-testid="input-health" {...field} />
                   </FormControl>
@@ -207,8 +201,7 @@ export default function OtherParametersForm({ defaultValues, onSubmit, onBack }:
               name="parentVisits"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Parent Visits</FormLabel>
-                  <FormDescription>Number of times parents visited college and department</FormDescription>
+                  <FormLabel>Number of Parent Visits to the College</FormLabel>
                   <FormControl>
                     <Textarea placeholder="3 times - on dates..." data-testid="input-parent-visits" {...field} />
                   </FormControl>
@@ -218,13 +211,25 @@ export default function OtherParametersForm({ defaultValues, onSubmit, onBack }:
             />
             <FormField
               control={form.control}
-              name="otherIssues"
+              name="otherIssuesResolved"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Other Issues</FormLabel>
-                  <FormDescription>Academic/Non-academic related issues identified & rectified</FormDescription>
+                  <FormLabel>Other Identified & Resolved Academic/Non-Academic Issues</FormLabel>
                   <FormControl>
                     <Textarea placeholder="Issue identified and resolved..." data-testid="input-other-issues" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="studentGrievances"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Student Grievances (if any)</FormLabel>
+                  <FormControl>
+                    <Textarea placeholder="None / Details of grievances..." data-testid="input-grievances" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

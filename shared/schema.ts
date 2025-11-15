@@ -32,18 +32,19 @@ export const backlogSchema = z.object({
 });
 
 export const otherParametersSchema = z.object({
-  academicTrack: z.string(),
-  attendance: z.string(),
-  technicalSkills: z.string(),
+  academicTrackSGPA: z.string(),
+  attendanceAlerts: z.string(),
+  technicalProgrammingSkills: z.string(),
   aptitudeSkills: z.string(),
-  programmingSkills: z.string(),
+  clubsTrainings: z.string(),
   coCurricularActivities: z.string(),
   extraCurricularActivities: z.string(),
-  ranksAwards: z.string(),
-  disciplinaryIssues: z.string(),
-  healthGraph: z.string(),
+  ranksAwardsRecognitions: z.string(),
+  indisciplinaryActivities: z.string(),
+  currentHealthStatus: z.string(),
   parentVisits: z.string(),
-  otherIssues: z.string(),
+  otherIssuesResolved: z.string(),
+  studentGrievances: z.string(),
 });
 
 export const mentoringReportSchema = z.object({

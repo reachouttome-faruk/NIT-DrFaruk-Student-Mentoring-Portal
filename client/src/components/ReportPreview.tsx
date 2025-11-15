@@ -166,52 +166,56 @@ export default function ReportPreview({ data, onDownload, onEdit, onNewEntry }: 
           <Table>
             <TableBody>
               <TableRow>
-                <TableCell className="font-medium w-1/3">Academic Track (SGPA)</TableCell>
-                <TableCell>{data.otherParameters.academicTrack}</TableCell>
+                <TableCell className="font-medium w-1/3">Academic Track (SGPA-Semester-wise)</TableCell>
+                <TableCell>{data.otherParameters.academicTrackSGPA}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Attendance & Alerts</TableCell>
-                <TableCell>{data.otherParameters.attendance}</TableCell>
+                <TableCell className="font-medium">Attendance and Alerts Issued (to Parents/Guardians)</TableCell>
+                <TableCell>{data.otherParameters.attendanceAlerts}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Technical Skills</TableCell>
-                <TableCell>{data.otherParameters.technicalSkills}</TableCell>
+                <TableCell className="font-medium">Skill Possession - Technical / Programming Skills</TableCell>
+                <TableCell>{data.otherParameters.technicalProgrammingSkills}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Aptitude Skills</TableCell>
+                <TableCell className="font-medium">Skill Possession - Aptitude Skills</TableCell>
                 <TableCell>{data.otherParameters.aptitudeSkills}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Programming Skills</TableCell>
-                <TableCell>{data.otherParameters.programmingSkills}</TableCell>
+                <TableCell className="font-medium">Participation in NIT Clubs or Certification Trainings</TableCell>
+                <TableCell>{data.otherParameters.clubsTrainings}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Co-Curricular Activities</TableCell>
+                <TableCell className="font-medium">Participation in Co-Curricular Activities (Workshops, Seminars, Guest Lectures, etc.)</TableCell>
                 <TableCell>{data.otherParameters.coCurricularActivities}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Extra-Curricular Activities</TableCell>
+                <TableCell className="font-medium">Participation in Extra-Curricular Activities (Sports, Cultural, NSS, etc.)</TableCell>
                 <TableCell>{data.otherParameters.extraCurricularActivities}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Ranks/Awards/Rewards</TableCell>
-                <TableCell>{data.otherParameters.ranksAwards}</TableCell>
+                <TableCell className="font-medium">Ranks / Awards / Recognitions at College or University Level</TableCell>
+                <TableCell>{data.otherParameters.ranksAwardsRecognitions}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Disciplinary Issues</TableCell>
-                <TableCell>{data.otherParameters.disciplinaryIssues}</TableCell>
+                <TableCell className="font-medium">Involvement in Any In-disciplinary Activities</TableCell>
+                <TableCell>{data.otherParameters.indisciplinaryActivities}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Health Graph</TableCell>
-                <TableCell>{data.otherParameters.healthGraph}</TableCell>
+                <TableCell className="font-medium">Current Health Status</TableCell>
+                <TableCell>{data.otherParameters.currentHealthStatus}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Parent Visits</TableCell>
+                <TableCell className="font-medium">Number of Parent Visits to the College</TableCell>
                 <TableCell>{data.otherParameters.parentVisits}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Other Issues</TableCell>
-                <TableCell>{data.otherParameters.otherIssues}</TableCell>
+                <TableCell className="font-medium">Other Identified & Resolved Academic/Non-Academic Issues</TableCell>
+                <TableCell>{data.otherParameters.otherIssuesResolved}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">Student Grievances (if any)</TableCell>
+                <TableCell>{data.otherParameters.studentGrievances}</TableCell>
               </TableRow>
             </TableBody>
           </Table>
