@@ -11,7 +11,22 @@ The application is fully functional with a 5-step form flow:
 4. **Other Parameters** - Comprehensive tracking of academic, skill, activity, and other student parameters
 5. **Review** - Preview and download PDF report with college branding
 
-## Recent Changes (November 15, 2025)
+## Recent Changes (November 17, 2025)
+
+### Student Information Section Enhancements
+- Added University Registration Number (USN) field - required
+- Added Father's Name field - required
+- Added Student Photo Upload with preview functionality
+  - Supports image upload and preview
+  - Stores photo as base64 data URL
+  - Photo displays in report preview and PDF document
+  - Optional field with upload/remove capability
+
+### Section Title Updates
+- Renamed "Subject-wise Performance" to "IA Subject-wise Performance"
+- Renamed "Participation in NIT Clubs or Certification Trainings" to "Participation in NIT Clubs or Certification Done"
+
+## Previous Changes (November 15, 2025)
 
 ### Branding Update
 - Updated site title to "Navodaya Institute of Technology (Autonomous)" across all pages and PDF reports

@@ -53,20 +53,38 @@ export default function ReportPreview({ data, onDownload, onEdit, onNewEntry }: 
           <CardHeader>
             <CardTitle>Student Details</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-2">
-            <div className="grid grid-cols-2 gap-2">
-              <span className="font-medium">Name:</span>
-              <span data-testid="text-student-name">{data.studentDetails.studentName}</span>
-              <span className="font-medium">Class:</span>
-              <span data-testid="text-class">{data.studentDetails.class}</span>
-              <span className="font-medium">Section:</span>
-              <span data-testid="text-section">{data.studentDetails.section}</span>
-              <span className="font-medium">Attendance as on Date:</span>
-              <span data-testid="text-attendance-date">{data.studentDetails.attendanceAsOnDate}</span>
-              <span className="font-medium">Current CGPA:</span>
-              <span data-testid="text-cgpa">{data.studentDetails.currentCGPA}</span>
-              <span className="font-medium">Mentoring Period:</span>
-              <span data-testid="text-mentoring-period">{data.studentDetails.mentoringPeriod}</span>
+          <CardContent className="space-y-4">
+            <div className="flex gap-4">
+              <div className="flex-1 space-y-2">
+                <div className="grid grid-cols-2 gap-2">
+                  <span className="font-medium">Name:</span>
+                  <span data-testid="text-student-name">{data.studentDetails.studentName}</span>
+                  <span className="font-medium">USN:</span>
+                  <span data-testid="text-usn">{data.studentDetails.usn}</span>
+                  <span className="font-medium">Father's Name:</span>
+                  <span data-testid="text-father-name">{data.studentDetails.fatherName}</span>
+                  <span className="font-medium">Class:</span>
+                  <span data-testid="text-class">{data.studentDetails.class}</span>
+                  <span className="font-medium">Section:</span>
+                  <span data-testid="text-section">{data.studentDetails.section}</span>
+                  <span className="font-medium">Attendance as on Date:</span>
+                  <span data-testid="text-attendance-date">{data.studentDetails.attendanceAsOnDate}</span>
+                  <span className="font-medium">Current CGPA:</span>
+                  <span data-testid="text-cgpa">{data.studentDetails.currentCGPA}</span>
+                  <span className="font-medium">Mentoring Period:</span>
+                  <span data-testid="text-mentoring-period">{data.studentDetails.mentoringPeriod}</span>
+                </div>
+              </div>
+              {data.studentDetails.studentPhotoDataUrl && (
+                <div className="w-24 h-32 flex-shrink-0">
+                  <img 
+                    src={data.studentDetails.studentPhotoDataUrl} 
+                    alt="Student" 
+                    className="w-full h-full object-cover rounded-md border-2 border-border"
+                    data-testid="img-student-photo"
+                  />
+                </div>
+              )}
             </div>
           </CardContent>
         </Card>

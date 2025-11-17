@@ -39,23 +39,35 @@ export function generatePDF(data: MentoringReport, logoDataUrl?: string, footerD
   doc.text("Student Details", 14, yPos);
   yPos += 5;
 
+  const studentDetailsBody: any[][] = [
+    ["Student Name", data.studentDetails.studentName],
+    ["USN", data.studentDetails.usn],
+    ["Father's Name", data.studentDetails.fatherName],
+    ["Class", data.studentDetails.class],
+    ["Section", data.studentDetails.section],
+    ["Attendance as on Date", data.studentDetails.attendanceAsOnDate],
+    ["Current CGPA", data.studentDetails.currentCGPA],
+    ["Mentoring Period", data.studentDetails.mentoringPeriod],
+  ];
+
   autoTable(doc, {
     startY: yPos,
     head: [["Field", "Value"]],
-    body: [
-      ["Student Name", data.studentDetails.studentName],
-      ["Class", data.studentDetails.class],
-      ["Section", data.studentDetails.section],
-      ["Attendance as on Date", data.studentDetails.attendanceAsOnDate],
-      ["Current CGPA", data.studentDetails.currentCGPA],
-      ["Mentoring Period", data.studentDetails.mentoringPeriod],
-    ],
+    body: studentDetailsBody,
     theme: "grid",
     headStyles: { fillColor: [33, 91, 145], fontSize: 10 },
     styles: { fontSize: 9 },
-    margin: { left: 14, right: 14, bottom: 15 },
+    margin: { left: 14, right: data.studentDetails.studentPhotoDataUrl ? 50 : 14, bottom: 15 },
     didDrawPage: addFooter,
   });
+
+  if (data.studentDetails.studentPhotoDataUrl) {
+    const photoX = pageWidth - 45;
+    const photoY = yPos + 5;
+    const photoWidth = 30;
+    const photoHeight = 40;
+    doc.addImage(data.studentDetails.studentPhotoDataUrl, "JPEG", photoX, photoY, photoWidth, photoHeight);
+  }
 
   yPos = (doc as any).lastAutoTable.finalY + 10;
 
