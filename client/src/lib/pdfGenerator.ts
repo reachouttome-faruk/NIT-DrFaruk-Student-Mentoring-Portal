@@ -213,5 +213,33 @@ export function generatePDF(data: MentoringReport, logoDataUrl?: string, footerD
     },
   });
 
+  yPos = (doc as any).lastAutoTable.finalY + 20;
+
+  if (yPos > 220) {
+    doc.addPage();
+    yPos = 20;
+  }
+
+  doc.setFontSize(10);
+  doc.setFont("helvetica", "normal");
+
+  const signatureY = yPos;
+  const col1X = 20;
+  const col2X = 110;
+  const lineWidth = 70;
+  const rowHeight = 30;
+
+  doc.text("Mentor Signature", col1X, signatureY);
+  doc.line(col1X, signatureY + 15, col1X + lineWidth, signatureY + 15);
+
+  doc.text("HOD Signature", col2X, signatureY);
+  doc.line(col2X, signatureY + 15, col2X + lineWidth, signatureY + 15);
+
+  doc.text("Dean Signature", col1X, signatureY + rowHeight);
+  doc.line(col1X, signatureY + rowHeight + 15, col1X + lineWidth, signatureY + rowHeight + 15);
+
+  doc.text("Principal Signature", col2X, signatureY + rowHeight);
+  doc.line(col2X, signatureY + rowHeight + 15, col2X + lineWidth, signatureY + rowHeight + 15);
+
   return doc;
 }

@@ -22,6 +22,15 @@ The application is fully functional with a 5-step form flow:
   - Photo displays in report preview and PDF document
   - Optional field with upload/remove capability
 
+### PDF Document Enhancements
+- Added signature sections at the end of the PDF document:
+  - Mentor Signature
+  - HOD Signature
+  - Dean Signature
+  - Principal Signature
+- Signature sections arranged in a 2x2 grid layout with signature lines
+- Automatically adds new page if insufficient space
+
 ### Section Title Updates
 - Renamed "Subject-wise Performance" to "IA Subject-wise Performance"
 - Renamed "Participation in NIT Clubs or Certification Trainings" to "Participation in NIT Clubs or Certification Done"
