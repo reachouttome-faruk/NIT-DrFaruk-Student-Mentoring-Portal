@@ -43,6 +43,7 @@ export function generatePDF(data: MentoringReport, logoDataUrl?: string, footerD
     ["Student Name", data.studentDetails.studentName],
     ["USN", data.studentDetails.usn],
     ["Father's Name", data.studentDetails.fatherName],
+    ["Student Mobile Number", data.studentDetails.studentMobileNumber],
     ["Class", data.studentDetails.class],
     ["Section", data.studentDetails.section],
     ["Attendance as on Date", data.studentDetails.attendanceAsOnDate],
@@ -81,6 +82,7 @@ export function generatePDF(data: MentoringReport, logoDataUrl?: string, footerD
     head: [["Field", "Value"]],
     body: [
       ["Mentor Name", data.studentDetails.mentorName],
+      ["Employee ID", data.studentDetails.mentorEmployeeId],
       ["Designation", data.studentDetails.mentorDesignation],
       ["Department", data.studentDetails.mentorDepartment],
     ],

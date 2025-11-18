@@ -4,6 +4,7 @@ export const studentDetailsSchema = z.object({
   studentName: z.string().min(1, "Student name is required"),
   usn: z.string().min(1, "USN is required"),
   fatherName: z.string().min(1, "Father's name is required"),
+  studentMobileNumber: z.string().min(1, "Student mobile number is required"),
   studentPhotoDataUrl: z.string().optional(),
   class: z.string().min(1, "Class is required"),
   section: z.string().min(1, "Section is required"),
@@ -11,6 +12,7 @@ export const studentDetailsSchema = z.object({
   currentCGPA: z.string().min(1, "Current CGPA is required"),
   mentoringPeriod: z.string().min(1, "Mentoring period is required"),
   mentorName: z.string().min(1, "Mentor name is required"),
+  mentorEmployeeId: z.string().min(1, "Mentor employee ID is required"),
   mentorDesignation: z.string().min(1, "Designation is required"),
   mentorDepartment: z.string().min(1, "Department is required"),
 });

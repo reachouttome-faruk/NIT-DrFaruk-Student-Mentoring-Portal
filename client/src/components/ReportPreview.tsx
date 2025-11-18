@@ -63,6 +63,8 @@ export default function ReportPreview({ data, onDownload, onEdit, onNewEntry }: 
                   <span data-testid="text-usn">{data.studentDetails.usn}</span>
                   <span className="font-medium">Father's Name:</span>
                   <span data-testid="text-father-name">{data.studentDetails.fatherName}</span>
+                  <span className="font-medium">Mobile Number:</span>
+                  <span data-testid="text-student-mobile">{data.studentDetails.studentMobileNumber}</span>
                   <span className="font-medium">Class:</span>
                   <span data-testid="text-class">{data.studentDetails.class}</span>
                   <span className="font-medium">Section:</span>
@@ -97,6 +99,8 @@ export default function ReportPreview({ data, onDownload, onEdit, onNewEntry }: 
             <div className="grid grid-cols-2 gap-2">
               <span className="font-medium">Name:</span>
               <span data-testid="text-mentor-name">{data.studentDetails.mentorName}</span>
+              <span className="font-medium">Employee ID:</span>
+              <span data-testid="text-mentor-employee-id">{data.studentDetails.mentorEmployeeId}</span>
               <span className="font-medium">Designation:</span>
               <span data-testid="text-designation">{data.studentDetails.mentorDesignation}</span>
               <span className="font-medium">Department:</span>

@@ -22,6 +22,7 @@ function StudentDetailsForm({ defaultValues, onSubmit }: StudentDetailsFormProps
       studentName: "",
       usn: "",
       fatherName: "",
+      studentMobileNumber: "",
       studentPhotoDataUrl: "",
       class: "",
       section: "",
@@ -29,6 +30,7 @@ function StudentDetailsForm({ defaultValues, onSubmit }: StudentDetailsFormProps
       currentCGPA: "",
       mentoringPeriod: "",
       mentorName: "",
+      mentorEmployeeId: "",
       mentorDesignation: "",
       mentorDepartment: "",
     },
@@ -43,6 +45,7 @@ function StudentDetailsForm({ defaultValues, onSubmit }: StudentDetailsFormProps
         studentName: "",
         usn: "",
         fatherName: "",
+        studentMobileNumber: "",
         studentPhotoDataUrl: "",
         class: "",
         section: "",
@@ -50,6 +53,7 @@ function StudentDetailsForm({ defaultValues, onSubmit }: StudentDetailsFormProps
         currentCGPA: "",
         mentoringPeriod: "",
         mentorName: "",
+        mentorEmployeeId: "",
         mentorDesignation: "",
         mentorDepartment: "",
       });
@@ -117,10 +121,23 @@ function StudentDetailsForm({ defaultValues, onSubmit }: StudentDetailsFormProps
                   control={form.control}
                   name="fatherName"
                   render={({ field }) => (
-                    <FormItem className="md:col-span-2">
+                    <FormItem>
                       <FormLabel>Father's Name *</FormLabel>
                       <FormControl>
                         <Input placeholder="Enter father's name" data-testid="input-father-name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="studentMobileNumber"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Student Mobile Number *</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Enter mobile number" data-testid="input-student-mobile" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -266,6 +283,19 @@ function StudentDetailsForm({ defaultValues, onSubmit }: StudentDetailsFormProps
             />
             <FormField
               control={form.control}
+              name="mentorEmployeeId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Mentor Employee ID *</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter employee ID" data-testid="input-mentor-employee-id" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
               name="mentorDesignation"
               render={({ field }) => (
                 <FormItem>
@@ -281,7 +311,7 @@ function StudentDetailsForm({ defaultValues, onSubmit }: StudentDetailsFormProps
               control={form.control}
               name="mentorDepartment"
               render={({ field }) => (
-                <FormItem className="md:col-span-2">
+                <FormItem>
                   <FormLabel>Department *</FormLabel>
                   <FormControl>
                     <Input placeholder="e.g., Computer Science & Engineering" data-testid="input-department" {...field} />
